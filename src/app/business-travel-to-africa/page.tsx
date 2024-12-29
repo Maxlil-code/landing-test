@@ -6,7 +6,6 @@ import Image from "next/image";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import "../relocation-from-africa/from-africa.scss";
 
 const LargeBusiness = () => {
   const cons: string[] = [
