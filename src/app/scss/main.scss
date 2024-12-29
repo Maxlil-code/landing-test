@@ -1,0 +1,342 @@
+@import "./utils";
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  //   transition-duration: $transition-duration;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth !important;
+  // border: 1px solid $primary;
+}
+html {
+  scroll-behavior: smooth !important;
+  font-family: "Open Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  color: $text !important;
+  scroll-behavior: smooth !important;
+  // background-color: $secondary;
+  main.content-wrapper {
+    margin-top: 73px;
+    p {
+      color: $text;
+      font-size: 1em;
+      font-weight: 500;
+      color: $light-text;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .doc-list {
+      padding: 1rem 2rem !important;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  @include for-mobile {
+    font-size: 16px;
+  }
+  @include for-extra-small {
+    font-size: 14px;
+  }
+  @include for-extra-large {
+    font-size: 18px;
+  }
+  // @include for-mobile {
+  //   font-size: 12px;
+  // }
+  /* scrollbar ******************************* */
+
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary;
+    outline: 1px solid slategrey;
+  }
+
+  /* end scrollbar ******************************* */
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.con {
+  width: 1200px;
+  margin: 0 auto;
+  @include for-extra-large {
+    width: 1300px;
+  }
+  @include for-tablet {
+    width: 90%;
+  }
+  @include for-mobile {
+    width: 90%;
+  }
+}
+
+form {
+  .flex {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    @include for-mobile {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+  .button-flex {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .field {
+    width: 100%;
+    height: auto;
+    text-align: left;
+    margin-bottom: 1rem;
+    label {
+      display: block;
+      font-size: 1em;
+      margin-bottom: 0.1rem;
+      color: $text;
+      text-transform: lowercase;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+      &.bold {
+        font-weight: 600;
+        color: $light-text;
+      }
+    }
+    input,
+    select {
+      width: 100%;
+      height: 50px;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      padding: 0 0.7rem;
+      font-size: 1em;
+      background-color: $white;
+    }
+    textarea {
+      width: 100%;
+      height: 300px;
+      border-radius: $border-radius;
+      padding: 0.7rem;
+      font-size: 1em;
+      background-color: $white;
+      transition-duration: $transition-duration;
+    }
+    .ant-select {
+      width: 100% !important;
+      height: 50px;
+      .ant-select-selector {
+        height: 50px;
+        border-radius: $border-radius;
+        padding: 0 0.5rem;
+        font-size: 1rem;
+        background-color: $white;
+        color: $text;
+        border: 1px solid $border-color;
+        input {
+          height: 50px !important;
+        }
+      }
+      &:hover {
+        .ant-select-selector {
+          border-color: $border-color !important;
+        }
+      }
+    }
+    input,
+    select {
+      &:focus {
+        border-color: $primary;
+        transition-duration: $transition-duration;
+      }
+    }
+    &.error {
+      input,
+      select,
+      textarea {
+        border-color: $red !important;
+        background-color: $light-red;
+        &::placeholder {
+          color: $red !important;
+        }
+      }
+      .password-sub {
+        border-color: $red !important;
+      }
+      .ant-select {
+        .ant-select-selector {
+          border-color: $red;
+          background-color: $light-red;
+        }
+      }
+      .error {
+        font-size: 0.9em;
+        color: $red;
+      }
+    }
+    input {
+      &[type="checkbox"],
+      &[type="radio"] {
+        display: none;
+      }
+      + label {
+        .select-field {
+          width: 100%;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border: 1px solid $border-color;
+          border-radius: $border-radius;
+          padding: 0 0.7rem;
+          font-size: 1em;
+          background-color: $white;
+          transition-duration: 0.5s;
+          cursor: pointer;
+          p {
+            color: $text;
+            transition-duration: 0.5s;
+            &::first-letter {
+              text-transform: uppercase;
+            }
+          }
+          span {
+            opacity: 0;
+            color: $secondary;
+            transition-duration: 0.5s;
+          }
+        }
+      }
+      &:checked {
+        + label {
+          .select-field {
+            border: 2px solid $secondary;
+            transition-duration: 0.5s;
+            p {
+              color: $secondary;
+              transition-duration: 0.5s;
+            }
+            span {
+              opacity: 1;
+              transition-duration: 0.5s;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+section {
+  padding: 7rem 0;
+  @include for-mobile {
+    padding: 3.5rem 0;
+  }
+  .section-title {
+    margin-bottom: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    h2 {
+      font-size: 1.5rem;
+      color: $primary;
+      font-weight: 800;
+      text-transform: capitalize;
+      text-align: center;
+    }
+    p {
+      width: 50%;
+      font-size: 1em;
+      color: $light-text;
+      text-align: center;
+      margin: 0 auto;
+      @include for-tablet {
+        width: 70%;
+      }
+      @include for-mobile {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.download-card {
+  background-color: $white;
+  padding: 1rem;
+  border-radius: $border-radius;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  > img {
+    width: 25px;
+    @include for-mobile {
+      width: 20px;
+    }
+    @include for-extra-small {
+      width: 18px;
+    }
+  }
+  .details {
+    h6 {
+      font-size: 0.9em;
+      color: $text;
+      text-transform: uppercase;
+      font-weight: 600;
+      @include for-mobile {
+        font-size: 0.8em;
+      }
+      @include for-extra-small {
+        font-size: 0.7em;
+      }
+    }
+    p {
+      font-size: 0.9em;
+      color: $text;
+      line-height: 1;
+      @include for-extra-small {
+        font-size: 0.7em;
+      }
+    }
+  }
+}
+
+.youtube-player {
+  width: 100%;
+  height: 60vh;
+  border-radius: 8px;
+}
+.in-modal-player-dismiss {
+  cursor: pointer;
+  color: #ccc;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.2);
+  }
+}

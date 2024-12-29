@@ -1,0 +1,163 @@
+@import "../../scss/utils";
+@import "../../scss/variables";
+
+header.website-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100vw;
+  @include for-tablet {
+    // display: none;
+  }
+  .header-sub {
+    width: 100%;
+    padding: 1rem 0;
+    background-color: $white;
+    .con {
+      // width: 100%;
+      // padding-right: 10vw;
+      // padding-left: calc(calc(100vw - 1200px) / 2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .logo {
+        height: auto;
+        width: 5rem;
+        position: relative;
+      }
+      > button {
+        display: none;
+        font-size: 1.4em;
+        @include for-tablet {
+          display: flex;
+        }
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        @include for-tablet {
+          align-items: flex-start;
+          justify-content: flex-start;
+          position: fixed;
+          z-index: 9;
+          top: calc(40px + 2rem);
+          left: 0;
+          background-color: $white;
+          width: 0vw;
+          height: calc(100vh - calc(40px + 2rem));
+          flex-direction: column;
+          padding: 4rem 0;
+          overflow-x: hidden;
+          transition-duration: $transition-duration;
+          &.show {
+            width: 100vw;
+            transition-duration: $transition-duration;
+          }
+        }
+        > .button {
+          @include for-tablet {
+            display: flex;
+            justify-content: flex-start;
+            width: 100vw;
+            padding-left: 5vw;
+          }
+        }
+        ul {
+          width: fit-content;
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+          @include for-tablet {
+            flex-direction: column;
+            width: 100vw;
+          }
+          li {
+            @include for-tablet {
+              width: 100vw;
+              text-align: left;
+              padding-left: 3vw;
+            }
+            .link {
+              font-size: 1.1em;
+              font-weight: 500;
+              color: $text;
+              text-decoration: none;
+              transition-duration: $transition-duration;
+              cursor: pointer;
+              position: relative;
+              &::after {
+                content: "";
+                display: block;
+                width: 8px;
+                height: 2px;
+                border-radius: 50%;
+                background-color: $text;
+                position: absolute;
+                top: 110%;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0;
+                transition-duration: $transition-duration;
+              }
+              &.active {
+                &::after {
+                  opacity: 1;
+                  transition-duration: $transition-duration;
+                }
+              }
+              &:hover {
+                &::after {
+                  opacity: 0.5;
+                  transition-duration: $transition-duration;
+                }
+              }
+            }
+          }
+        }
+      }
+      .buttons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-left: 3rem;
+        .custom-button {
+          padding: 0.5rem 1rem;
+          @include for-mobile {
+            min-width: 100%;
+          }
+        }
+        @include for-mobile {
+          flex-direction: column;
+          margin-left: 0;
+          width: 100%;
+          align-items: flex-start;
+          padding: 0 1rem;
+          a {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ant-dropdown {
+  padding-top: 25px !important;
+  .ant-dropdown-menu {
+    border-radius: $border-radius !important;
+    .ant-dropdown-menu-item {
+      width: 175px !important;
+      font-size: 16px;
+      font-weight: 500 !important;
+      padding: 0.5rem 1rem !important;
+      &:hover {
+        background-color: #0535452c !important;
+        // color: white !important;
+        color: $primary !important;
+      }
+    }
+  }
+}
